@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 
 public class Node {
 
@@ -128,7 +129,7 @@ public class Node {
         /**
          * parcours l'arbre passé en paramètre selon le chemin donné jusqu'à trouver un caractère
          */
-        if(getLabel() != "generic node"){
+        if(!Objects.equals(getLabel(), "generic node")){
             String[] res = {text, getLabel()};
             return res;
         }else{
