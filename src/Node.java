@@ -82,6 +82,14 @@ public class Node {
         return nb < 0;
     }
 
+    public boolean isInferior(Node min){
+        /**
+         * retourne si un noeud est inférieur à l'autre
+         */
+        return getFrequency() < min.getFrequency() ||
+                (getFrequency() == min.getFrequency() && isNegative(getLabel().compareTo(min.getLabel()))) ||
+                (getFrequency() == min.getFrequency() && getLabel().equals("generic node"));
+    }
 
     public static Node[] getMin(ArrayList<Node> frequencyList){
         /**
@@ -91,10 +99,7 @@ public class Node {
         for(int i=0; i<2; i++){
             Node min = frequencyList.get(0);
             for(Node node : frequencyList){
-                if(node.getFrequency() < min.getFrequency() ||
-                        (node.getFrequency() == min.getFrequency() && isNegative(node.getLabel().compareTo(min.getLabel()))) ||
-                        (node.getFrequency() == min.getFrequency() && node.getLabel().equals("generic node"))
-                ){
+                if(node.isInferior(min)){
                     min = node;
                 }
             }

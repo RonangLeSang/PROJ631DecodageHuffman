@@ -48,4 +48,10 @@ public class Reader {
         }
     }
 
+    public static void writeFile(String path, String text) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+        writer.write(text);
+        writer.close();
+    }
+
 }
