@@ -20,6 +20,15 @@ public class DicoFreq {
     }
 
 
+    public int getNbChar(){
+        int nbChar = 0;
+        for(String key : frequencies.keySet()){
+            nbChar += frequencies.get(key);
+        }
+        return nbChar;
+    }
+
+
     @Override
     public String toString() {
         return "DicoFreq{" +

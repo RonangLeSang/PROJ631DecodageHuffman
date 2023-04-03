@@ -147,16 +147,18 @@ public class Node {
         }
     }
 
-    public String decode_tree(String text){
+    public String decode_tree(String text, DicoFreq dicoFreq){
         /**
          * décode chaque caractère du texte selon la méthode de Huffman
          */
         String result = "";
+        int nbChar = 0;
 
-        while(text.length() > 1 && text.length() > 1){
+        while(text.length() > 1 && dicoFreq.getNbChar() > nbChar){
             String[] decoded_text = decode_char(text);
             result += decoded_text[1];
             text = decoded_text[0];
+            nbChar += 1;
         }
         return result;
     }

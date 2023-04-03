@@ -16,16 +16,19 @@ public class Main {
         String readBinary = testRead.readText();
         Node node = Node.construct_tree(dicoFreq.getFrequencies());
 
-        String text = node.decode_tree(readBinary);
+        String text = node.decode_tree(readBinary, dicoFreq);
         System.out.println(text);
         Reader.writeFile(fileName + ".txt", text);
 
         Path ogPath = Paths.get(fileName + "_comp.bin");
         Path newPath = Paths.get(fileName + ".txt");
-        double originalSize = Files.size(ogPath);
-        double decompressedSize = Files.size(newPath);
+        float originalSize = Files.size(ogPath);
+        float decompressedSize = Files.size(newPath);
         System.out.println("taux de compresssion : " + originalSize/decompressedSize*100 + " %");
-        double bitsPerChar = readBinary.length()/text.length();
+
+        float txtLength = text.length();
+        float binLength = readBinary.length();
+        float bitsPerChar = binLength/txtLength;
         System.out.println("nombre moyen de bits par caractère : " + bitsPerChar);
     }
 }
